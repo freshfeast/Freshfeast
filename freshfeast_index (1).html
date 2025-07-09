@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshFeast</title>
+</head>
+<body style="margin:0; font-family:Segoe UI,sans-serif; background:#fff3e0; padding-bottom:80px; color:#222;">
+
+  <!-- Header -->
+  <div style="background:#fff3e0; padding:24px 16px; text-align:center; border-bottom:4px solid #e53935;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+      <img src="https://i.ibb.co/5h7bxk1z/Screenshot-2025-05-10-00-03-00-12-92460851df6f172a4592fca41cc2d2e6.jpg"
+           alt="FreshFeast Logo"
+           style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #e53935;">
+      <div>
+        <h1 style="margin:0; font-size:42px; color:#e53935;">FreshFeast</h1>
+        <p style="margin:6px 0 0; font-size:22px; font-style:italic; color:#e53935;">Start your day in a healthy way</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscription -->
+  <div id="subscription-section">
+    <h2 style="font-size:22px; margin:20px 16px 12px; color:#4CAF50;">Subscription Packages</h2>
+    <div style="display:flex; overflow-x:auto; gap:16px; padding:0 16px 10px;">
+      <div style="min-width:220px; background:#ffffff; border:2px solid #c8e6c9; border-radius:12px; padding:16px;">
+        <h4 style="color:#388e3c;">Premium</h4>
+        <p>4 fruits, 2 veg, sprouts, dates</p>
+        <p>₹2199/month</p>
+        <button onclick="addToCart('Premium Package - ₹2199')" style="background:#4CAF50; color:white; padding:8px 14px; border:none; border-radius:8px;">Add to Cart</button>
+      </div>
+      <div style="min-width:220px; background:#ffffff; border:2px solid #c8e6c9; border-radius:12px; padding:16px;">
+        <h4 style="color:#388e3c;">Regular</h4>
+        <p>3 fruits, 1 veg, mixed sprouts</p>
+        <p>₹1999/month</p>
+        <button onclick="addToCart('Regular Package - ₹1999')" style="background:#4CAF50; color:white; padding:8px 14px; border:none; border-radius:8px;">Add to Cart</button>
+      </div>
+      <div style="min-width:220px; background:#ffffff; border:2px solid #c8e6c9; border-radius:12px; padding:16px;">
+        <h4 style="color:#388e3c;">Fruits Plan</h4>
+        <p>Mix of seasonal fruits</p>
+        <p>₹1299/month</p>
+        <button onclick="addToCart('Fruits Package - ₹1299')" style="background:#4CAF50; color:white; padding:8px 14px; border:none; border-radius:8px;">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fruits -->
+  <div id="fruits-section">
+    <h2 style="font-size:22px; margin:20px 16px 12px; color:#4CAF50;">Fruits</h2>
+    <div style="display:flex; overflow-x:auto; gap:16px; padding:0 16px 10px;">
+      <div style="min-width:220px;"><h4>Apple</h4><p>₹300/kg</p><button onclick="addToCart('Apple - ₹300/kg')">Add</button></div>
+      <div style="min-width:220px;"><h4>Banana</h4><p>₹70/kg</p><button onclick="addToCart('Banana - ₹70/kg')">Add</button></div>
+      <div style="min-width:220px;"><h4>Dragon</h4><p>₹70/pc</p><button onclick="addToCart('Dragon - ₹70/pc')">Add</button></div>
+      <div style="min-width:220px;"><h4>Papaya</h4><p>₹70/pc</p><button onclick="addToCart('Papaya - ₹70/pc')">Add</button></div>
+    </div>
+  </div>
+
+  <!-- Vegetables -->
+  <div id="vegetables-section">
+    <h2 style="font-size:22px; margin:20px 16px 12px; color:#4CAF50;">Vegetables</h2>
+    <div style="display:flex; overflow-x:auto; gap:16px; padding:0 16px 10px;">
+      <div style="min-width:220px;"><h4>Carrot</h4><p>₹100/kg</p><button onclick="addToCart('Carrot - ₹100/kg')">Add</button></div>
+      <div style="min-width:220px;"><h4>Cucumber</h4><p>₹50/kg</p><button onclick="addToCart('Cucumber - ₹50/kg')">Add</button></div>
+      <div style="min-width:220px;"><h4>Beetroot</h4><p>₹50/kg</p><button onclick="addToCart('Beetroot - ₹50/kg')">Add</button></div>
+    </div>
+  </div>
+
+  <!-- Refer -->
+  <div id="refer-section" style="text-align:center; padding:20px;">
+    <h3 style="color:#388e3c; font-size:20px;">Refer and Earn</h3>
+  </div>
+
+  <!-- Order Button -->
+  <div style="text-align:center; margin-bottom:80px;">
+    <button onclick="orderOnWhatsApp()" style="padding:10px 20px; background:#e53935; color:white; border:none; border-radius:8px;">Order on WhatsApp</button>
+  </div>
+
+  <!-- Cart Popup -->
+  <div id="cart-popup" style="display:none; position:fixed; top:20%; left:10%; right:10%; background:white; border:2px solid #e53935; padding:16px; border-radius:12px; z-index:999;">
+    <button onclick="hideCart()" style="float:right; font-size:20px; background:none; border:none;">×</button>
+    <h3 style="text-align:center; color:#e53935;">Your Cart</h3>
+    <ul id="cart-items" style="list-style:none; padding:0; margin:16px 0;"></ul>
+    <button onclick="orderOnWhatsApp()" style="display:block; margin:10px auto; background:#e53935; color:white; padding:8px 16px; border:none; border-radius:10px;">Order on WhatsApp</button>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div style="position:fixed; bottom:0; width:100%; background:white; box-shadow:0 -2px 5px rgba(0,0,0,0.1); z-index:100;">
+    <ul style="list-style:none; display:flex; justify-content:space-around; margin:0; padding:14px 0; font-size:18px;">
+      <li><a id="nav-home" href="#" onclick="showAll('home')" style="text-decoration:none; color:#333;">🏠 Home</a></li>
+      <li><a id="nav-subscription" href="#" onclick="showSection('subscription-section', 'subscription')" style="text-decoration:none; color:#333;">📦 Subscription</a></li>
+      <li><a id="nav-refer" href="#" onclick="showSection('refer-section', 'refer')" style="text-decoration:none; color:#333;">🎁 Refer</a></li>
+      <li><a id="nav-cart" href="#" onclick="showCartNav()" style="text-decoration:none; color:#333;">🛒 Cart <span id="cart-count" style="background:#e53935; color:white; border-radius:50%; padding:3px 8px; font-size:13px; margin-left:4px;">0</span></a></li>
+    </ul>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      document.getElementById("cart-count").innerText = cart.length;
+      alert(item + " added to cart.");
+    }
+
+    function showCart() {
+      const popup = document.getElementById("cart-popup");
+      const list = document.getElementById("cart-items");
+      list.innerHTML = "";
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = item + " <button onclick='removeFromCart(" + index + ")'>Remove</button>";
+        list.appendChild(li);
+      });
+      popup.style.display = "block";
+    }
+
+    function hideCart() {
+      document.getElementById("cart-popup").style.display = "none";
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      document.getElementById("cart-count").innerText = cart.length;
+      showCart();
+    }
+
+    function orderOnWhatsApp() {
+      if (cart.length === 0) {
+        alert("🛒 Your cart is empty!");
+        return;
+      }
+      let message = "Hi, welcome to FreshFeast!%0AThank you for ordering.%0AItems:%0A";
+      cart.forEach(item => {
+        message += "- " + item + "%0A";
+      });
+      message += "%0APlease confirm availability.%0AWhere do we need to deliver?";
+      window.open("https://wa.me/918074608712?text=" + message, "_blank");
+    }
+
+    function setActiveNav(activeId) {
+      const navIds = ['nav-home', 'nav-subscription', 'nav-refer', 'nav-cart'];
+      navIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.color = (id === activeId) ? '#e53935' : '#333';
+      });
+    }
+
+    function showSection(id, nav) {
+      ['subscription-section', 'fruits-section', 'vegetables-section', 'refer-section'].forEach(sec => {
+        const section = document.getElementById(sec);
+        if (section) section.style.display = (sec === id) ? 'block' : 'none';
+      });
+      hideCart();
+      setActiveNav('nav-' + nav);
+    }
+
+    function showAll(page = 'home') {
+      ['subscription-section', 'fruits-section', 'vegetables-section', 'refer-section'].forEach(id => {
+        const section = document.getElementById(id);
+        if (section) section.style.display = 'block';
+      });
+      hideCart();
+      setActiveNav('nav-' + page);
+    }
+
+    function showCartNav() {
+      if (cart.length === 0) {
+        alert("🛒 Your cart is empty!");
+        return;
+      }
+      showCart();
+      setActiveNav('nav-cart');
+    }
+
+    window.onload = () => {
+      showAll('home');
+    };
+  </script>
+</body>
+</html>
